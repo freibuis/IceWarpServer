@@ -8,6 +8,19 @@ module IceWarpServer
 
     end
 
+    def token
+      @token ||= new_api_token
+    end
+    def new_token (object)
+      @token = IceWarpServer.icewarp_apiobjectcall('0', 'Create', object, '', '')
+    end
+
+
+    #Every Object has a token_handle! deal with it.
+    def token_handle(token_handle='')
+      api('TokenHandle', token_handle)
+
+    end
 
     def last_err
       error = api("LastErr")

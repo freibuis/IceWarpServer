@@ -1,19 +1,24 @@
-module IceWarServer
+module IceWarpServer
 
 
   class DomainObject < IceWarpServer::BaseObject
 
     attr_reader :domain, :api_object
 
+
     def initialize(api_object)
       @api_object ||= api_object
 
-      @token ||= IceWarpServer.icewarp_apiobjectcall(@api_object.token, '', 'IceWarpServer.DomainObject', '', '')
+      new_token('IceWarpServer.DomainObject')
+
+      unless @api_object.token_handle == nil
+        self.token_handle(api_object.token_handle)
+      end
     end
 
-    def new_token
-      @token = IceWarpServer.icewarp_apiobjectcall(@api_object.token, '', 'IceWarpServer.DomainObject', '', '')
-    end
+
+
+
 
     def api_object
       @api_object
@@ -47,7 +52,7 @@ module IceWarServer
 
     #The Name property lets you read or set the Name of the domain you want to create or save.
     def name
-       api("Name")
+      api("Name")
     end
 
     def get_property(property)
@@ -89,7 +94,7 @@ module IceWarServer
 
     #Return the account's alias specified by the Index in the account list.
     def get_account(index)
-       api("GetAccount", index)
+      api("GetAccount", index)
     end
 
     #Use the OpenAccount function to edit an existing account.
@@ -99,7 +104,7 @@ module IceWarServer
 
     #The NewAccount lets you add a new account.
     def new_account(email_address)
-       api("NewAccount", email_address)
+      api("NewAccount", email_address)
     end
 
     #Tries to find the alias in the domain. If found the index will be returned. If not a negative number will be returned.

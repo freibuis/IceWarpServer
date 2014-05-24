@@ -8,28 +8,27 @@
 module IceWarpServer
 
   class ApiObject < IceWarpServer::BaseObject
-    attr_reader :token, :version
-    attr_accessor :token_handle
+    attr_reader  :version,:token_object
 
-    def initialize
-      new_api_token
+
+    def initialize (token_object = nil)
+
+      new_token('IceWarpServer.ApiObject')
+
+      #Connect to Remote host if token created
+      unless token_object == nil
+        @token_object = token_object
+        self.token_handle(token_object.token_handle)
+      end
+
       # reload_services
     end
 
 
 
-    def token
-      @token ||= new_api_token
-    end
-
-    def token_handle=(token_handle)
-      @token_handle = IceWarpServer.icewarp_apiobjectcall(token, 'TokenHandle', token_handle,'','')
-    end
 
 
-    def new_api_token
-      @token = IceWarpServer.icewarp_apiobjectcall('0', 'Create', 'IceWarpServer.APIObject','','')
-    end
+
 
 # Returns the whole list of domains as an array.
     def get_domain_list

@@ -1,6 +1,10 @@
-module IceWarp
-  class AccountObject
-    attr_reader :api_object, :api, :email
+module IceWarpServer
+  class AccountObject < IceWarpServer::BaseObject
+    include IceWarpServer::BaseProperties
+
+    attr_reader :api_object, :email
+
+
 
     def initialize(api_object=nil)
 
@@ -23,14 +27,12 @@ module IceWarp
 
     def open(email)
       @email = email
-      token
-      api("Open", "#{email}")
+      api("Open", email)
     end
 
-    def new(domain)
+    def new(email)
       @email = email
-      new_token
-      @domain = api("New", "#{email}")
+      @domain = api("New", email)
     end
 
     #The email address of the current user.
@@ -47,25 +49,6 @@ module IceWarp
       api("Delete")
     end
 
-    def get_properties(*properties)
-      if properties.count == 1
-        api("GetProperty", properties)
-      else
-        values = []
-        properties.each do |property|
-          values.push api("GetProperty", property)
-        end
-        cmd
-      end
-    end
-
-    def get_property(property)
-      api("GetProperty", property)
-    end
-
-    def set_property(property, value)
-      api("SetProperty", property, value)
-    end
 
     def save
       api("Save")

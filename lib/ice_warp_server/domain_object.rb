@@ -2,6 +2,7 @@ module IceWarpServer
 
 
   class DomainObject < IceWarpServer::BaseObject
+    include IceWarpServer::BaseProperties
 
     attr_reader :domain, :api_object
 
@@ -53,14 +54,6 @@ module IceWarpServer
     #The Name property lets you read or set the Name of the domain you want to create or save.
     def name
       api("Name")
-    end
-
-    def get_property(property)
-      api("GetProperty", property)
-    end
-
-    def set_property(property)
-      api("SetProperty", property)
     end
 
     def ipaddress

@@ -1,4 +1,4 @@
-# IceWarpServer
+# IceWarpServer Api Gem
 
 This is a re-write of the original IceWarpApi that was here on github (deleted). The old verision use standard lib XMLRPC::Client. Unfortunately this was slow and painful to work with.
 
@@ -50,10 +50,16 @@ auth string = administrator ":" password "@" server
 auth = "system_account:securepass@myipaddress"
 token_object = IceWarpServer::TokenObject.new
 token_object.url = auth
-api = IceWarpServer::ApiObject.new
-api.token_handle = token_object.token_handle # apply token object handle to api token
+api_object = IceWarpServer::ApiObject.new
+api_object.token_handle = token_object.token_handle # apply token object handle to api token
 ```
 
+preferred connection method: pass the TokenObject to the ApiObject (with authentication in the token) 
+```ruby
+auth = "system_account:securepass@myipaddress"
+token_object = IceWarpServer::TokenObject.new(auth)
+api_object = IceWarpServer::ApiObject.new(token_object)
+```
 
 
 ## TODO

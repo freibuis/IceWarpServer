@@ -1,7 +1,9 @@
 module IceWarServer
-  attr_reader :domain, :api_object
 
-  class DomainObject < IceWarServer::BaseObject
+
+  class DomainObject < IceWarpServer::BaseObject
+
+    attr_reader :domain, :api_object
 
     def initialize(api_object)
       @api_object ||= api_object

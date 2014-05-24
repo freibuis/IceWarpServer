@@ -2,8 +2,10 @@ require 'ffi'
 require "ice_warp_server/api_lib"
 require 'ice_warp_server/base_object'
 require "ice_warp_server/version"
-require "ice_warp_server/api_object"
 require "ice_warp_server/token_object"
+require "ice_warp_server/api_object"
+require "ice_warp_server/domain_object"
+
 
 
 module IceWarpServer

@@ -57,7 +57,7 @@ module IceWarpServer
     end
 
     def version
-      @version ||= ("GetProperty", 'c_version')
+      @version ||= api("GetProperty", 'c_version')
     end
 
     # The Done function closes the COM object and frees the allocated data. It also saves the changed settings if any.

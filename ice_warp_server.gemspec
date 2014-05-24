@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["freibuis@gmail.com"]
   spec.summary       = %q{Ruby IceWarpServer Interface}
   spec.description   = %q{Ruby IceWarpServer Interface using api.dll or libapi.so}
-  spec.homepage      = "http://github.com/freibuis"
+  spec.homepage      = "https://github.com/freibuis/IceWarpServer"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

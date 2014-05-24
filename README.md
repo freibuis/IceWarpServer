@@ -60,8 +60,6 @@ api.token_handle = token_object.token_handle # apply token object handle to api 
 
 The Following Objects need to be mapped
  
-DomainObject
-
 AccountObject
   
 RemoteAccountObject

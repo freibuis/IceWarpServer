@@ -43,17 +43,14 @@ use the Icewarp server Api PDF for more information on usable properties
 
 Note: To connect from a remote machine will require the use of the TokenObject then bind its token handle with all objects
 
-```ruby
+
+
 auth string = administrator ":" password "@" server
-
+```ruby
 auth = "system_account:securepass@myipaddress"
-
 token_object = IceWarpServer::TokenObject.new
-
 token_object.url = auth
-
 api = IceWarpServer::ApiObject.new
-
 api.token_handle = token_object.token_handle # apply token object handle to api token
 ```
 
@@ -61,16 +58,26 @@ api.token_handle = token_object.token_handle # apply token object handle to api 
 
 ## TODO
 
-The Following Objects need to be mapped 
-  DomainObject
-  AccountObject  
-  RemoteAccountObject
-  StatisticsObject 
-  Mailer
-  IMMessage 
-  IDP
-  Groupware 
-  ChallengeResponse 
+The Following Objects need to be mapped
+ 
+DomainObject
+
+AccountObject
+  
+RemoteAccountObject
+
+StatisticsObject
+ 
+Mailer
+
+IMMessage
+ 
+IDP
+
+Groupware
+ 
+ChallengeResponse
+ 
 
 SSL support with the token object coming later.
 

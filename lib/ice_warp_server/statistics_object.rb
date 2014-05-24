@@ -8,7 +8,7 @@ module IceWarpServer
 
       @api_object = api_object
 
-      new_token('StatisticsObject')
+      new_token('IceWarpServer.StatisticsObject')
 
       unless @api_object.token_handle == nil
         self.token_handle(api_object.token_handle)

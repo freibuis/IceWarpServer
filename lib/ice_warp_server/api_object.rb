@@ -38,13 +38,13 @@ module IceWarpServer
 
     #Renames an old domain to the new domain name.
     def rename_domain(domain_from, domain_to)
-      response = api("RenameDomain", domain_from, domain_to)
+      response = api("RenameDomain", domain_from, domain_to).to_bool
     end
 
 
     # Deletes an existing domain with all its accounts.
     def delete_domain(domain)
-      api("DeleteDomain", domain)
+      api("DeleteDomain", domain).to_bool
     end
 
     # Returns the number of all domains on the IceWarp Email Server.
@@ -66,7 +66,7 @@ module IceWarpServer
     end
 
     def save
-      api('Save')
+      api('Save').to_bool
     end
 
     def get_property(property)
@@ -94,7 +94,7 @@ module IceWarpServer
     # They let you backup and restore the IceWarp Email Server settings. The Path parameter specifies the complete file name of
     # the destination backup file
     def backup_config(path)
-      api("BackupConfig", path)
+      api("BackupConfig", path).to_bool
     end
 
     # The Backup and Restore functions are identical to the IceWarp Email Server administration interface backup and restore
@@ -102,14 +102,18 @@ module IceWarpServer
     # They let you backup and restore the IceWarp Email Server settings. The Path parameter specifies the complete file name of
     # the destination backup file
     def restore_config(path, password)
-      api("RestoreConfig", path, password)
+      api("RestoreConfig", path, password).to_bool
 
     end
 
     # This function takes care of indexing the spam and genuine messages. The Email is the account email address to be indexed.
     # If empty the global spam and genuine messages will be indexed.
     def spam_index_now(email)
-      api("SpamIndexNow", email)
+      api("SpamIndexNow", email).to_bool
+    end
+
+    def check_db_connection(connection)
+      api("CheckDBConnection", email).to_bool
     end
 
     #The Domain parameter specifies the name of the domain to be opened

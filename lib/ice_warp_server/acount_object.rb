@@ -27,12 +27,12 @@ module IceWarpServer
 
     def open(email)
       @email = email
-      api("Open", email)
+      api("Open", email).to_bool
     end
 
     def new(email)
       @email = email
-      @domain = api("New", email)
+      @domain = api("New", email).to_bool
     end
 
     #The email address of the current user.
@@ -46,12 +46,12 @@ module IceWarpServer
 
     #You can delete an existing account you are editing by calling the Delete function.
     def delete
-      api("Delete")
+      api("Delete").to_bool
     end
 
 
     def save
-      api("Save")
+      api("Save").to_bool
     end
 
     #The AuthenticateUser function lets you check and load the user specified by the Username, Password
@@ -81,34 +81,19 @@ module IceWarpServer
     # These functions let you loop through all accounts in the domain. It is not recommended to use the GetDomainCount and loop
     # thru each account based on the Index. That would be too slow. Use these functions instead.
     def find_init(domain)
-      accounts = api("FindInit", domain)
-      if accounts =~ (/^(true|t|yes|y|1)$/i)
-        true
-      else
-        false
-      end
+     api("FindInit", domain).to_bool
     end
 
     def find_init_query(domain, query)
-      accounts = api("FindInitQuery", domain, query)
-      if accounts =~ (/^(true|t|yes|y|1)$/i)
-        true
-      else
-        false
-      end
+     api("FindInitQuery", domain, query).to_bool
     end
 
     def find_next
-      accounts = api("FindNext")
-      if accounts =~ (/^(true|t|yes|y|1)$/i)
-        true
-      else
-        false
-      end
+      accounts = api("FindNext").to_bool
     end
 
     def find_done
-      api("FindDone")
+      api("FindDone").to_bool
     end
 
 

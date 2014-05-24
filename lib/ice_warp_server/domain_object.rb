@@ -33,7 +33,7 @@ module IceWarpServer
 
     def open(domain)
       @domain = domain
-      api("Open", domain)
+      api("Open", domain).to_bool
     end
 
     def domain
@@ -43,7 +43,7 @@ module IceWarpServer
     def new(domain)
       @domain = domain
       new_token
-      api("New", domain)
+      api("New", domain).to_bool
     end
 
     #When editing an existing domain you can delete it by calling this function. The domain must be properly loaded.
@@ -61,7 +61,7 @@ module IceWarpServer
     end
 
     def save
-      api("Save")
+      api("Save").to_bool
     end
 
     #Returns the whole domain list of all account aliases separated with semicolon.
@@ -78,11 +78,11 @@ module IceWarpServer
 
     #Deletes an existing account. The Email parameter can be either a complete email address or just an alias.
     def delete_account(email_address)
-      api("DeleteAccount", email_address)
+      api("DeleteAccount", email_address).to_bool
     end
 
     def delete_account_id(id)
-      api("DeleteAccountID", id)
+      api("DeleteAccountID", id).to_bool
     end
 
     #Return the account's alias specified by the Index in the account list.
@@ -104,6 +104,10 @@ module IceWarpServer
     def get_account_index_by_alias(email_address)
       index = api("GetAccountIndexByAlias", email_address)
       Integer(index)
+    end
+
+    def apply_template(template_name)
+      api("ApplyTemplatet", template_name).to_bool
     end
 
   end

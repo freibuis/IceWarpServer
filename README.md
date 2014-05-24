@@ -18,20 +18,20 @@ Most commands can be take from the api pdf http://www.icewarp.com/download/docum
 Example: Get Domain Count
 ```ruby
 api = IceWarpServer::ApiObject.new
-api,get_domain_count
+api.get_domain_count
 ```
 
 Example: Get Domain List
 ```ruby
 api = IceWarpServer::ApiObject.new
-api,get_domain_list
+api.get_domain_list
 This will return and array of domains (api returns string. helper makes it enum array)
 ```
 
 Example Get Server Verison
 ```ruby
 api = IceWarpServer::ApiObject.new
-api,get_property('c_version')
+api.get_property('c_version')
 or shorthand
 api.version
 ```

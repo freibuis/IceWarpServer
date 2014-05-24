@@ -39,13 +39,13 @@ module IceWarpServer
 
     #Renames an old domain to the new domain name.
     def rename_domain(domain_from, domain_to)
-      response = api.call("RenameDomain", domain_from, domain_to)
+      response = api("RenameDomain", domain_from, domain_to)
     end
 
 
     # Deletes an existing domain with all its accounts.
     def delete_domain(domain)
-      api.call("DeleteDomain", domain)
+      api("DeleteDomain", domain)
     end
 
     # Returns the number of all domains on the IceWarp Email Server.
@@ -57,7 +57,7 @@ module IceWarpServer
     end
 
     def version
-      @version ||= api.call("GetProperty", 'c_version')
+      @version ||= ("GetProperty", 'c_version')
     end
 
     # The Done function closes the COM object and frees the allocated data. It also saves the changed settings if any.
@@ -173,7 +173,7 @@ module IceWarpServer
     #
     # Returns Array of folders
     def get_folder_list(folder, recursive = false)
-      raw_list = api.call("GetFolderList", folder, recursive)
+      raw_list = api("GetFolderList", folder, recursive)
       raw_list.split("\n").map { |folder| folder.chop }
     end
 

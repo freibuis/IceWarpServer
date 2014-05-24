@@ -1,10 +1,10 @@
 # IceWarpServer
 
-This a write of the orginal IceWarpApi that was here on github (deleted). The old verision use standard lib XMLRPC::Client. Unfortuantly this was slow and painful to work with.
+This is a re-write of the original IceWarpApi that was here on github (deleted). The old verision use standard lib XMLRPC::Client. Unfortunately this was slow and painful to work with.
 
 This rewrite uses IceWarpServer .dll's/.so files using the FFI gem(https://github.com/ffi/ffi) to talk directly to the  IcewarpServer API. This is much faster and removes the heavy lifting.
 
-You will need to drop the api.dll (windows) or libapi.so (linux) into the project root folder. Linux might require so OS level dependices which I will list later. 
+You will need to drop the api.dll (windows) or libapi.so (linux) into the project root folder. Linux might require so OS level dependencies which I will list later. 
 The dll/so files are not included in this project. You can grab them from
 
   C:\Program Files\IceWarp\api.dll    windows 32 ruby

@@ -93,7 +93,7 @@ detect from configuration if its local or remote. if remote automagically apply 
 
 Add this line to your application's Gemfile:
 
-    gem 'ice_warp_server' , :git => 'git://github.com:freibuis/IceWarpServer.git'
+    gem 'ice_warp_server' , :git => 'git://github.com/freibuis/IceWarpServer.git'
 
 And then execute:
 

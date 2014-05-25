@@ -1,5 +1,6 @@
 require 'ffi'
 require "ice_warp_server/api_lib"
+require "ice_warp_server/connection"
 require 'ice_warp_server/base_object'
 require 'ice_warp_server/base_properties'
 require "ice_warp_server/version"
@@ -21,8 +22,13 @@ module IceWarpServer
   extend FFI::Library
   ffi_convention :stdcall
 
+  begin
   ffi_lib IceWarpServer.api_lib
   attach_function :icewarp_apiobjectcall, [:string, :string, :string, :string, :string], :string
+  rescue LoadError
+    warn "Could Not Load IceWarp api file: #{IceWarpServer.api_lib}\n Please add IceWarpServer::Connection.api_lib_location = "
+  end
+
 
 
 end

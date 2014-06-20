@@ -8,7 +8,7 @@ module IceWarpServer
 
       @api_object = api_object
 
-      new_token('IceWarpServer.StatisticsObject')
+      new_token('IceWarpServer.Groupware')
 
       unless @api_object.token_handle == nil
         self.token_handle(api_object.token_handle)
@@ -16,8 +16,8 @@ module IceWarpServer
 
     end
 
-    def func_name(parm1='', parm2='', parm3='',parm4='')
-      api("FuncName", parm1, parm2, parm3,parm4)
+    def function_call(parm1='', parm2='', parm3='')
+      api("FunctionCall", parm1, parm2, parm3)
     end
     def connect(server,ssl=false)
       api("Connect", server,ssl.to_s).to_bool
@@ -26,12 +26,7 @@ module IceWarpServer
     def disconnect
       api("Disconnect").to_bool
     end
-=begin
-    function FunctionCall(const FuncName: WideString; const Param1: WideString; const Param2: WideString; const Param3:
-                                                                                                                    WideString; const Param4: WideString): WideString; safecall;
-    function Connect(const Server: WideString; SSL: WordBool): WordBool; safecall;
-    function Disconnect: WordBool; safecall;
-=end
+
 
   end
 
